@@ -1,0 +1,23 @@
+
+site_name: My Python Project
+nav:
+  - Home: index.md
+  - Architecture:
+      - System Overview: architecture/system-overview.md
+      - Context: architecture/context.md
+      - Containers: architecture/containers.md
+      - Components: architecture/components.md
+  - ADRs:
+      - 001 Use FastAPI: adr/001-use-fastapi.md
+      - 002 LLM Provider: adr/002-llm-provider.md
+      - 003 Vector DB: adr/003-vector-db.md
+  - Runbooks:
+      - Production: runbooks/prod.md
+      - Disaster Recovery: runbooks/disaster-recovery.md
+  - API:
+      - OpenAPI: api/openapi.yaml
+theme:
+  name: material
+plugins:
+  - search
+  - mermaid2
