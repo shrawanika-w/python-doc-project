@@ -51,6 +51,7 @@ Health check response:
   "llm": "ok",
   "storage": "ok"
 }
+```
 
 ## 4. Deployment Model
 
@@ -74,21 +75,25 @@ Typical sizes:
 ```bash
 kubectl rollout restart deployment rag-api -n rag-prod
 kubectl rollout restart deployment rag-worker -n rag-prod
+```
 
 ### 5.2 Scale for Load
 
 ```bash
 kubectl scale deployment rag-worker --replicas=5 -n rag-prod
+```
 
 ### 5.3 Check Pods
 
 ```bash
 kubectl get pods -n rag-prod
+```
 
 ### 5.4 View Logs
 
 ```bash
 kubectl logs -f <pod-name> -n rag-prod
+```
 
 ## 6. Monitoring
 
@@ -125,3 +130,52 @@ Actions:
 * Scale workers
 * Enable query caching
 * Check embedding batch sizes
+
+## 8. Data Operations
+
+### 8.1 Verify Vector Data
+```sql
+SELECT COUNT(*) FROM document_embeddings;
+```
+
+### 8.2 Sample Similarity Query
+```sql
+SELECT id, content
+FROM document_embeddings
+ORDER BY embedding <-> '[0.01, 0.22, ...]'
+LIMIT 5;
+```
+
+## 9. Security and Compliance
+
+* All data encrypted in transit and at rest
+* API protected via OAuth or API Gateway
+* Audit logs enabled
+* No raw customer data sent to LLM without redaction
+* Prompt and response logging controlled via policy
+
+## 10. Scheduled Maintenance
+
+| Task                 | Frequency |
+| -------------------- | --------- |
+| PostgreSQL backup    | Daily     |
+| Index rebuild        | Weekly    |
+| Model quality review | Monthly   |
+| Dependency patching  | Monthly   |
+| Load testing         | Quarterly |
+
+## 11. Escalation Contacts
+
+* DevOps On-Call
+* AI Platform Lead
+* Database Team
+* Security Operations
+
+## 12. References
+
+* Architecture: /docs/architecture/system-overview.md
+* ADRs: /docs/adr
+* API Spec: /docs/api/openapi.yaml
+* DR Runbook: /docs/runbooks/disaster-recovery.md
+
+  
