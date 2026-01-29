@@ -4,9 +4,10 @@ nav:
   - Home: index.md
   - Architecture:
       - System Overview: architecture/system-overview.md
-      - Context: architecture/context.md
-      - Containers: architecture/containers.md
-      - Components: architecture/components.md
+      - Context: architecture/diagrams/context.md
+      - Containers: architecture/diagrams/containers.md
+      - Components: architecture/diagrams/components.md
+      - Code: architecture/diagrams/code.md
   - ADRs:
       - 001 Use FastAPI: adr/001-use-fastapi.md
       - 002 LLM Provider: adr/002-llm-provider.md
